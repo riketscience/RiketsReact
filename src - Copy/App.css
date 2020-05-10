@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+  background-color: #f7ebd9;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.app-header {
+  background-color: #381d0f;
+  background-image: url('./Resources/b2.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+ 
+  width: auto;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(255, 231, 163);
+}
+
+.home-roast-logo {
+  width: 80px;
+}
+
+.main-menu {
+  background-color: #632f05;
+}
+
+.main-content {
+  padding: 0 8px;
+}
+
+.menu-items {
+  color: blanchedalmond;
+  margin: 0 0 4px 0;
+  display: inline-flex;
+}
+
+.menu-items a {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  color: wheat;
+  text-decoration: none;
+}
+
+.coffee-item {
+  background-color: #f7f1e8;
+  color: #754207;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 8px;
+  margin: 16px;
+  width: 280px;
+}
+
+.coffee-item h3 {
+  color: #080402;
+}
+
+.strength-stars {
+  padding: 16px 0;
+}
+
+.star {
+  color: #edddbe;
+  font-size: 1.5em;
+  margin: 4px;
+}
+
+.star.active {
+  color: rgb(82, 45, 12);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
