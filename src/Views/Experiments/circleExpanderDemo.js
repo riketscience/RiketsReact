@@ -87,6 +87,7 @@ function CircleExpanderDemo() {
             </div>
             <div class="svg-render">
                 <svg style={{width: 800, height: 480}}>
+                    <rect stroke="#F00" fill="transparent" x="2" y="2" width="796" height="476"></rect>
                     {circleProps.points.map(val => (
                         <circle fill={color(val)} r={val * sizeFactor * (1 + factor / 8 )} cx={(val*factor) + xOffset} cy={val*factor * yAngle + yOffset}></circle>
                     ))}
