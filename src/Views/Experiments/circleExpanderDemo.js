@@ -3,13 +3,9 @@ import Slider from "./slider";
 import AngleSlider from "./angleSlider";
 
 var circleProps = {
-    title: "expansion factor",
-    points: [1.78,2.67,4,6,9,13.5,20.25,30.375,45.56,68.344],
-    pointsString: "1.78,2.67,4,6,9,13.5,20.25,30.375,45.56,68.344]",
-    factor: 2,
+    points: [1.78,2.67,4,6,9,13.5,20.25,30.375,45.56,68.344]
 }
 
-const svgWidth = 800;
 const xWidth = 800;
 const yHeight = 380;
 
@@ -21,13 +17,8 @@ function CircleExpanderDemo() {
     
     const xOffset = xWidth / 4, yOffset = 50, sizeFactor = 0.6, fillOpacity = 0.9;
 
-    const expansionUpdated = (newVal) => {
-        setFactor(newVal);
-    }   
-
-    const angleUpdated = (newAngle) => {
-        setAngle(newAngle);
-    };
+    const expansionUpdated = (newVal) => { setFactor(newVal); }   
+    const angleUpdated = (newAngle) => { setAngle(newAngle); };
 
     function getMin() { 
         var min = circleProps.points.length > 0 ? circleProps.points[0] : 0;
