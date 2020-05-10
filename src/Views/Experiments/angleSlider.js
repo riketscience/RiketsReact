@@ -15,7 +15,7 @@ export default function AngleSlider(props) {
   return (
     <div className={classes.root} class="slider" >
       <Typography id="discrete-slider" gutterBottom>
-        {props.title}: {props.yAngle}<br />
+        angle:
       </Typography>
       <Slider
         defaultValue={0.75}

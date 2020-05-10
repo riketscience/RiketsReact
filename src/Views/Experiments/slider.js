@@ -15,7 +15,7 @@ export default function DiscreteSlider(props) {
   return (
     <div className={classes.root} class="slider">
       <Typography id="discrete-slider" gutterBottom>
-        {props.title}: {props.factor}<br />
+        expansion:<br />
       </Typography>
       <Slider
         defaultValue={2}
@@ -25,7 +25,7 @@ export default function DiscreteSlider(props) {
         marks={false}
         min={1}
         max={8}
-        onChange={(event, newValue) => (props.sliderUpdated(newValue))}
+        onChange={(event, newValue) => (props.expansionUpdated(newValue))}
       />
     </div>
   );

@@ -9,31 +9,24 @@ var circleProps = {
     factor: 2,
 }
 
-var angleProps = {
-    title: "angle",
-    yAngle: 0.75,
-}
-
 const svgWidth = 800;
 const xWidth = 800;
 const yHeight = 380;
 
 function CircleExpanderDemo() {
 
-    const [factor, setFactor] = useState(4);
-    const [honey, setPoints] = useState(circleProps.points); 
-    const [angle, setAngle] = useState(angleProps.yAngle); 
+    const [factor, setFactor] = useState(2);
+    const [points, setPoints] = useState(circleProps.points); 
+    const [yAngle, setAngle] = useState(0.75); 
     
     const xOffset = xWidth / 4, yOffset = 50, sizeFactor = 0.6, fillOpacity = 0.9;
 
-    circleProps.sliderUpdated = (newVal) => {
-        circleProps.factor = newVal;
-        setFactor(circleProps.factor);
+    const expansionUpdated = (newVal) => {
+        setFactor(newVal);
     }   
 
-    angleProps.angleUpdated = (newAngle) => {
+    const angleUpdated = (newAngle) => {
         setAngle(newAngle);
-        angleProps.yAngle = newAngle;
     };
 
     function getMin() { 
@@ -85,34 +78,35 @@ function CircleExpanderDemo() {
         var factor = scaler(c);
         var R =  factor;  // "Woody":(255 - factor); "Stinger": factor; "GreenTrees":(255 - factor) / 3;
         var G = factor / 1.5;
-        return "rgba("+(R)+","+G+","+0+","+fillOpacity+")";
+        var B = (255 - factor) / 2.5;
+        return "rgba("+(R)+","+G+","+B+","+fillOpacity+")";
     };
 
     return (
         <div>
-            <input type="text" value={honey} onChange={e => (pointsListChanged(e.target.value))}/> 
+            <input type="text" value={points} onChange={e => (pointsListChanged(e.target.value))}/> 
             <div>
             <div>Min: {getMin()}</div>
             <div>Max: {getMax()}</div>
             <div>Mean: {getMean()}</div>
             </div>
             <div class="sliders">
-                <Slider {...circleProps} />
-                <AngleSlider {...angleProps} />
+                <Slider expansionUpdated={expansionUpdated} />
+                <AngleSlider angleUpdated={angleUpdated} />
             </div>
             <div class="svg-render">
                 <svg style={{width: 800, height: 480}}>
                     {circleProps.points.map(val => (
-                        <circle fill={color(val)} r={val * sizeFactor * (1 + circleProps.factor / 8 )} cx={(val*circleProps.factor) + xOffset} cy={val*circleProps.factor * angleProps.yAngle + yOffset}></circle>
+                        <circle fill={color(val)} r={val * sizeFactor * (1 + factor / 8 )} cx={(val*factor) + xOffset} cy={val*factor * yAngle + yOffset}></circle>
                     ))}
                     {circleProps.points.map(val => (
-                        <circle fill={color(val)} r={val * sizeFactor * (1 + circleProps.factor / 8 )} cx={xWidth - (val*circleProps.factor + xOffset)} cy={val*circleProps.factor * angleProps.yAngle + yOffset}></circle>
+                        <circle fill={color(val)} r={val * sizeFactor * (1 + factor / 8 )} cx={xWidth - (val*factor + xOffset)} cy={val*factor * yAngle + yOffset}></circle>
                     ))}
                     {circleProps.points.map(val => (
-                        <circle fill={color(val)} r={val * sizeFactor * (1 + circleProps.factor / 8 )} cx={val*circleProps.factor + xOffset} cy={yHeight - val*circleProps.factor * angleProps.yAngle + yOffset}></circle>
+                        <circle fill={color(val)} r={val * sizeFactor * (1 + factor / 8 )} cx={val*factor + xOffset} cy={yHeight - val*factor * yAngle + yOffset}></circle>
                     ))}
                     {circleProps.points.map(val => (
-                        <circle fill={color(val)} r={val * sizeFactor * (1 + circleProps.factor / 8 )} cx={xWidth - (val*circleProps.factor + xOffset)} cy={yHeight - val*circleProps.factor * angleProps.yAngle + yOffset}></circle>
+                        <circle fill={color(val)} r={val * sizeFactor * (1 + factor / 8 )} cx={xWidth - (val*factor + xOffset)} cy={yHeight - val*factor * yAngle + yOffset}></circle>
                     ))}
                 </svg>
             </div>
